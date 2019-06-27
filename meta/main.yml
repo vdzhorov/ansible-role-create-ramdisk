@@ -1,0 +1,23 @@
+---
+
+dependencies: []
+
+galaxy_info:
+  author: vdzhorov
+  description: Add ramdisk to target machine
+  company: "Delta.BG"
+  license: "license (MIT)"
+  min_ansible_version: 2.5
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags:
+    - linux
+    - ramdisk

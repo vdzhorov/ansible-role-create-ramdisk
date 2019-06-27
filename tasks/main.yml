@@ -1,0 +1,16 @@
+---
+
+- name: Create ramdisk directory
+  file:
+    path: "{{ ramdisk_path }}"
+    state: directory
+    mode: 755
+    recurse: yes
+
+- name: Create and mount ramdisk
+  mount:
+    path: "{{ ramdisk_path }}"
+    src: tmpfs
+    fstype: tmpfs
+    state: mounted
+    opts: "{{ ramdisk_mount_options }},size={{ ramdisk_mount_size }}"
