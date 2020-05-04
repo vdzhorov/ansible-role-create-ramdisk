@@ -1,5 +1,7 @@
 ---
-
-ramdisk_path: '/var/cache/nginx'
-ramdisk_mount_options: 'nodev,nosuid,noexec,nodiratime'
-ramdisk_mount_size: '1024M'
+ramdisk:
+  - path: /var/cache/nginx
+    owner: nginx
+    group: nginx
+    mount_options: nodev,nosuid,noexec,nodiratime,size=2048M
+...

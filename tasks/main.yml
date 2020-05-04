@@ -1,16 +1,19 @@
 ---
-
 - name: Create ramdisk directory
   file:
-    path: "{{ ramdisk_path }}"
+    path: "{{ item.path }}"
     state: directory
-    mode: 755
-    recurse: yes
+    mode: 0755
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+  loop: "{{ ramdisk }}"
 
-- name: Create and mount ramdisk
+- name: Create /etc/fstab entry and mount the ramdisk
   mount:
-    path: "{{ ramdisk_path }}"
+    path: "{{ item.path }}"
     src: tmpfs
     fstype: tmpfs
     state: mounted
-    opts: "{{ ramdisk_mount_options }},size={{ ramdisk_mount_size }}"
+    opts: "{{ item.mount_options }}"
+  loop: "{{ ramdisk }}"
+...
